@@ -1,0 +1,134 @@
+/* Styles de base */
+body {
+    font-family: "Arial", sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #fff5e6, #ffd9b3); /* Dégradé pêche clair */
+    color: #5a3d2b; /* Brun doux */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ffb685; /* Orange doux */
+    color: #ffffff;
+    padding: 20px 0;
+    border-bottom: 4px solid #e89a6b;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-family: "Georgia", serif;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Sections */
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #ffffff; /* Blanc pur */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #5a3d2b;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fffaf3; /* Beige clair */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-family: "Arial", sans-serif;
+}
+
+/* Boutons */
+button {
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #ff8c42; /* Orange chaud */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #e57c38; /* Orange légèrement plus foncé */
+    transform: scale(1.05);
+}
+
+/* Spinner de chargement */
+.loading-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 245, 230, 0.9); /* Fond doux translucide */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.spinner {
+    border: 8px solid #f3e9dd; /* Gris clair pastel */
+    border-top: 8px solid #ff8c42; /* Orange chaud */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container p {
+    margin-top: 15px;
+    font-size: 1.2em;
+    color: #5a3d2b; /* Brun doux */
+}
+
+/* Section des dons */
+.donate-section h2 {
+    color: #5a3d2b;
+    font-size: 1.5em;
+}
+
+.donate-section p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #5a3d2b;
+}
+
+/* Footer */
+footer {
+    background-color: #ffd9b3; /* Pêche clair */
+    color: #5a3d2b;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 0.9em;
+    border-top: 4px solid #e89a6b;
+}

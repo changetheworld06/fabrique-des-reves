@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>La Fabrique des Rêves</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAg9vXGWr_qxuULWWOaW2KJT7mIdGgkmUtn3i8_7VecyPuXg9CX9hnclDGHaFbEMniJcET4j2dNfSgw-M&currency=EUR"></script>
+</head>
+<body>
+    <header>
+        <h1>✨ Bienvenue à La Fabrique des Rêves ✨</h1>
+        <p>Créez une histoire magique et personnalisée pour vos enfants.</p>
+    </header>
+
+    <section class="form-section">
+        <h2>Créer une Histoire</h2>
+        <form action="/generate" method="POST" onsubmit="showLoading()">
+            <label for="child_name">👶 Prénom de l'enfant :</label>
+            <input type="text" id="child_name" name="child_name" placeholder="Ex : Alice" required>
+            
+            <label for="interests">🎨 Centres d'intérêt :</label>
+            <input type="text" id="interests" name="interests" placeholder="Ex : licornes, magie" required>
+        
+            <label for="story_length">🕒 Durée de l'histoire :</label>
+            <select id="story_length" name="story_length">
+                <option value="courte">Courte (1-2 minutes)</option>
+                <option value="moyenne">Moyenne (3-4 minutes)</option>
+                <option value="longue">Longue (5-6 minutes)</option>
+            </select>
+        
+            <button type="submit">Créer une Histoire</button>
+        </form>
+    </section>
+
+    <!-- Indicateur de chargement -->
+    <div id="loading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Création de votre histoire en cours... ✨</p>
+    </div>
+
+    <section class="donate-section">
+        <h2>Soutenez ce Projet 💖</h2>
+        <p>Ce générateur est gratuit, mais vos dons nous aident à maintenir ce service et soutiennent des associations pour enfants.</p>
+        <div id="paypal-button-container"></div>
+        <script>
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: '2.00'
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Merci, ' + details.payer.name.given_name + ', pour votre soutien !');
+                    });
+                }
+            }).render('#paypal-button-container');
+        </script>
+    </section>
+
+    <footer>
+        <p>✨ Merci de faire partie de cette aventure magique ✨</p>
+    </footer>
+
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
