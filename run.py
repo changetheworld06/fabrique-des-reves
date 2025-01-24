@@ -2,6 +2,14 @@ from flask import Flask, render_template, request
 import openai
 from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
+
+# Charger les variables d'environnement à partir du fichier .env
+load_dotenv()
+
+# Récupérer les identifiants PayPal
+PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
+PAYPAL_SECRET = os.getenv("PAYPAL_SECRET")
 
 # Charger les variables d'environnement
 load_dotenv()
@@ -14,7 +22,7 @@ def home():
     """
     Page d'accueil avec le formulaire pour générer une histoire.
     """
-    return render_template('index.html')
+    return render_template('index.html', paypal_client_id=PAYPAL_CLIENT_ID)
 
 @app.route('/generate', methods=['POST'])
 def generate():
