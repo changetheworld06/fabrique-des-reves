@@ -8,18 +8,26 @@
 </head>
 <body>
     <header>
-        <h1>Votre Histoire Personnalisée</h1>
+        <h1>✨ Votre Histoire Personnalisée ✨</h1>
     </header>
 
     <section class="story-section">
         <h2>Histoire pour {{ child_name }}</h2>
-        <p>{{ story }}</p>
+        <div class="story-container">
+            <p>{{ story }}</p>
+        </div>
     </section>
 
     <footer>
-        <a href="/">
-            <button>Créer une nouvelle histoire</button>
-        </a>
+        <div class="footer-buttons">
+            <a href="/">
+                <button>Créer une nouvelle histoire</button>
+            </a>
+            <button onclick="window.print()">Imprimer l'histoire</button>
+        </div>
+        <p class="support-text">
+            ❤️ Merci de soutenir notre projet ! <a href="/">Cliquez ici pour faire un don.</a>
+        </p>
     </footer>
 </body>
 </html>

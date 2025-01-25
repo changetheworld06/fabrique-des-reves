@@ -1,18 +1,14 @@
 from flask import Flask, render_template, request
 import openai
-from dotenv import load_dotenv
 import os
 from dotenv import load_dotenv
 
-# Charger les variables d'environnement à partir du fichier .env
-load_dotenv()
-
-# Récupérer les identifiants PayPal
-PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
-PAYPAL_SECRET = os.getenv("PAYPAL_SECRET")
-
 # Charger les variables d'environnement
 load_dotenv()
+
+# Variables d'environnement
+PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
+PAYPAL_SECRET = os.getenv("PAYPAL_SECRET")
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
