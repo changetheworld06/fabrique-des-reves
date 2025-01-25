@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>La Fabrique des Rêves</title>
-    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=EUR"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AXOfYT2fy7TfOhQy4DNPohO1Y53gQYPnHaC8doO5auv_KKXPwOeaxVN7-BCe6cpLNeYIH3kzQN7eF8ve&currency=EUR"></script>
 </head>
 <body>
     <header>
@@ -33,34 +33,10 @@
         </form>
     </section>
 
-    <!-- Indicateur de chargement -->
-    <div id="loading" class="loading-container">
-        <div class="spinner"></div>
-        <p>Création de votre histoire en cours... ✨</p>
-    </div>
-
     <section class="donate-section">
         <h2>Soutenez ce Projet 💖</h2>
         <p>Ce générateur est gratuit, mais vos dons nous aident à maintenir ce service et soutiennent des associations pour enfants.</p>
         <div id="paypal-button-container"></div>
-        <script>
-            paypal.Buttons({
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: '2.00'
-                            }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Merci, ' + details.payer.name.given_name + ', pour votre soutien !');
-                    });
-                }
-            }).render('#paypal-button-container');
-        </script>
     </section>
 
     <footer>
@@ -71,6 +47,27 @@
         function showLoading() {
             document.getElementById('loading').style.display = 'flex';
         }
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '5.00' // Montant du don
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Merci, ' + details.payer.name.given_name + ', pour votre soutien !');
+                });
+            },
+            onError: function(err) {
+                console.error('Une erreur est survenue : ', err);
+                alert('Une erreur est survenue lors du paiement. Veuillez réessayer.');
+            }
+        }).render('#paypal-button-container'); // Montre le bouton PayPal
     </script>
 </body>
 </html>
