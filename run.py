@@ -20,6 +20,13 @@ def home():
     """
     return render_template('index.html', paypal_client_id=PAYPAL_CLIENT_ID)
 
+@app.route('/vision')
+def vision():
+    """
+    Page expliquant la vision du projet.
+    """
+    return render_template('vision.html')
+
 @app.route('/generate', methods=['POST'])
 def generate():
     """
