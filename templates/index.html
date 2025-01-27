@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>La Fabrique des Rêves</title>
-    <!-- Script PayPal avec le client-id corrigé -->
+    <!-- Script PayPal avec le client-id -->
     <script src="https://www.paypal.com/sdk/js?client-id=AXOfYT2fy7TfOhQy4DNPohO1Y53gQYPnHaC8doO5auv_KKXPwOeaxVN7-BCe6cpLNeYIH3kzQN7eF8ve&currency=EUR"></script>
     <script>
         // Fonction pour afficher le spinner
         function showLoading() {
-            document.getElementById('loading-container').style.display = 'flex';
+            const loadingContainer = document.getElementById('loading-container');
+            if (loadingContainer) {
+                loadingContainer.style.display = 'flex';
+            }
         }
     </script>
 </head>
@@ -20,12 +23,7 @@
         <p>Créez une histoire magique et personnalisée pour vos enfants.</p>
     </header>
 
-    <section class="vision-section">
-        <h2>Notre Vision 🌍</h2>
-        <p>Nous rêvons d'un monde meilleur où chaque enfant peut vivre des moments magiques et apprendre à rêver grand. Votre soutien nous aide à réaliser cette vision.</p>
-        <img src="{{ url_for('static', filename='images/magical_scene.png') }}" alt="Un monde magique et enchanteur" class="vision-image">
-    </section>
-
+    <!-- Section Formulaire -->
     <section class="form-section">
         <h2>Créer une Histoire</h2>
         <form action="/generate" method="POST" onsubmit="showLoading()">
@@ -36,7 +34,7 @@
             <input type="text" id="interests" name="interests" placeholder="Ex : licornes, magie" required>
         
             <label for="story_length">🕒 Durée de l'histoire :</label>
-            <select id="story_length" name="story_length">
+            <select id="story_length" name="story_length" required>
                 <option value="courte">Courte (1-2 minutes)</option>
                 <option value="moyenne">Moyenne (3-4 minutes)</option>
                 <option value="longue">Longue (5-6 minutes)</option>
@@ -46,18 +44,12 @@
         </form>
     </section>
 
-<footer>
-    <p>
-        Découvrez <a href="/vision">notre vision</a> pour un monde meilleur.
-    </p>
-</footer>
-
+    <!-- Section Dons -->
     <section class="donate-section">
         <h2>Soutenez ce Projet 💖</h2>
         <p>Ce générateur est gratuit, mais vos dons nous aident à maintenir ce service et soutiennent des associations pour enfants.</p>
         
         <!-- Bouton PayPal hébergé -->
-        <script src="https://www.paypal.com/sdk/js?client-id=BAAg9vXGWr_qxuULWWOaW2KJT7mIdGgkmUtn3i8_7VecyPuXg9CX9hnclDGHaFbEMniJcET4j2dNfSgw-M&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
         <div id="paypal-container-W6PV5L37JMR3W"></div>
         <script>
             paypal.HostedButtons({
@@ -66,8 +58,8 @@
         </script>
     </section>
 
-       <!-- Spinner de chargement -->
-       <div id="loading-container" class="loading-container">
+    <!-- Spinner de chargement -->
+    <div id="loading-container" class="loading-container" style="display: none;">
         <div class="spinner"></div>
         <p>Création de votre histoire en cours... Patientez un instant.</p>
     </div>
