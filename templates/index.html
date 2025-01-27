@@ -20,6 +20,12 @@
         <p>Créez une histoire magique et personnalisée pour vos enfants.</p>
     </header>
 
+    <section class="vision-section">
+        <h2>Notre Vision 🌍</h2>
+        <p>Nous rêvons d'un monde meilleur où chaque enfant peut vivre des moments magiques et apprendre à rêver grand. Votre soutien nous aide à réaliser cette vision.</p>
+        <img src="{{ url_for('static', filename='images/magical_scene.png') }}" alt="Un monde magique et enchanteur" class="vision-image">
+    </section>
+
     <section class="form-section">
         <h2>Créer une Histoire</h2>
         <form action="/generate" method="POST" onsubmit="showLoading()">

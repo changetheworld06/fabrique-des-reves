@@ -26,6 +26,34 @@ header p {
     margin-top: 10px;
 }
 
+.vision-section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    text-align: center;
+    background-color: #fffaf3; /* Beige clair */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vision-section h2 {
+    font-size: 2em;
+    color: #5a3d2b; /* Brun doux */
+    margin-bottom: 15px;
+}
+
+.vision-section p {
+    font-size: 1.2em;
+    color: #5a3d2b;
+    margin-bottom: 20px;
+}
+
+.vision-section img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Sections */
 section {
     margin: 20px auto;
